@@ -78,7 +78,7 @@ namespace Uppgift_2
 
                 Console.Write("Write at least 3 words separated by spaces: ");
                 string userInput = Console.ReadLine();
-                string[] splittedWords = userInput.Split(' ');
+                string[] splittedWords = userInput.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
                 if(!string.IsNullOrWhiteSpace(userInput) && splittedWords.Length >= 3)
                 {
