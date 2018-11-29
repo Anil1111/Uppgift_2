@@ -37,7 +37,11 @@ namespace Uppgift_2
                 }
             } while (wrongInput);
 
-            if(age < KID_AGE)
+            if(age < INFANT_AGE || age > VERY_OLD_AGE)
+            {
+                Console.WriteLine("Price: Free!!!");
+            }
+            else if(age >= INFANT_AGE && age <= KID_AGE)
             {
                 Console.WriteLine("Kid price: {0}", KID_PRICE.ToString("c"));
             }
@@ -45,7 +49,7 @@ namespace Uppgift_2
             {
                 Console.WriteLine("Standard price: {0}", STANDARD_PRICE.ToString("c"));
             }
-            else if(age > OLD_MAN_AGE)
+            else if(age > OLD_MAN_AGE && age <= VERY_OLD_AGE)
             {
                 Console.WriteLine("Senior price {0}", OLD_MAN_PRICE.ToString("c"));
             }
@@ -91,7 +95,6 @@ namespace Uppgift_2
         static void Main(string[] args)
         {
             bool keepGoing = true;
-            int menuOption;
 
             Console.WriteLine("Welcome to the program Menu");
 
@@ -99,33 +102,24 @@ namespace Uppgift_2
             {
                 
                 Console.WriteLine("0. Quit\n1: Young or Old\n2. Iterate input ten times\n3. The third word");
-
-                try
-                {
-                    menuOption = int.Parse(Console.ReadLine());
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("You must enter an integer!!!");
-                    continue;
-                }
+                string menuOption = Console.ReadLine();
 
                 switch (menuOption)
                 {
-                    case 0:
+                    case "0":
                         keepGoing = false;
                         break;
-                    case 1:
+                    case "1":
                         YoungOrOld();
                         Console.WriteLine("Press key to continue...");
                         Console.ReadKey(intercept: true);
                         break;
-                    case 2:
+                    case "2":
                         IterateInputTenTimes();
                         Console.WriteLine("Press key to continue...");
                         Console.ReadKey(intercept: true);
                         break;
-                    case 3:
+                    case "3":
                         TheThirdWord();
                         Console.WriteLine("Press key to continue...");
                         Console.ReadKey(intercept: true);
@@ -133,7 +127,6 @@ namespace Uppgift_2
                     default:
                         Console.WriteLine("Option number {0} is not an option", menuOption);
                         break;
-
                 }
 
             }
