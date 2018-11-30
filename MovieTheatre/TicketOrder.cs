@@ -6,19 +6,30 @@ using System.Threading.Tasks;
 
 namespace MovieTheatre
 {
-    
 
     class TicketOrder
     {
-        private MovieShow movieShow;
+        private readonly MovieShow _movieShow;
+        List<ITicket> _tickets = new List<ITicket>();
 
         public TicketOrder(MovieShow movieShow)
         {
-            this.movieShow = movieShow;
+            _movieShow = movieShow;
         }
 
-        public void AddTicketOrderRow()
+        public void AddTicket(ITicket ticket)
         {
+            _tickets.Add(ticket);
+        }
+
+        public int GetTotal()
+        {
+            int total = 0;
+            foreach(ITicket ticket in _tickets)
+            {
+                total += ticket.GetPrice();
+            }
+            return total;
         }
     }
 }

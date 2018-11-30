@@ -15,29 +15,31 @@ namespace MovieTheatre
 
         private MovieShowRepository _movieShowRepository = new MovieShowRepository();
         private TicketOrderRepository _ticketOrderRepository = new TicketOrderRepository();
+        
 
-        static int GetPrice(int age)
+        private static ITicket GetAppropriateTicket(int age)
         {
-            int price = 0;
+
+            ITicket ticket = null;
 
             if (age < INFANT_AGE || age > VERY_OLD_AGE)
             {
-                price = 0;
+                ticket = TicketFactory.GetTicket(TicketType.FREE);
             }
             else if (age >= INFANT_AGE && age <= KID_AGE)
             {
-                price = PriceList.KID_PRICE;
+                ticket = TicketFactory.GetTicket(TicketType.KID);
             }
             else if (age >= KID_AGE && age <= OLD_MAN_AGE)
             {
-                price = PriceList.STANDARD_PRICE;
+                ticket = TicketFactory.GetTicket(TicketType.STANDARD);
             }
             else if (age > OLD_MAN_AGE && age <= VERY_OLD_AGE)
             {
-                price = PriceList.SENIOR_PRICE;
+                ticket = TicketFactory.GetTicket(TicketType.SENIOR);
             }
 
-            return price;
+            return ticket;
         }
 
         public void PrintShows()
@@ -50,15 +52,18 @@ namespace MovieTheatre
 
         public int BuyTickets(MovieShow movieShow, int[] customersAge)
         {
-            int total = 0;
+
             TicketOrder order = new TicketOrder(movieShow);
 
             foreach(int age in customersAge)
             {
-                total += LocalMovieTheatre.GetPrice(age);
+                ITicket ticket = GetAppropriateTicket(age);
+                order.AddTicket(ticket);
             }
 
-            return total;
+            _ticketOrderRepository.AddOrder(order);
+
+            return order.GetTotal();
         }
 
         public void PrintTicketOrders()

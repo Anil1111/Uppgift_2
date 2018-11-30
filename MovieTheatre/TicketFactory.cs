@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieTheatre
 {
-    class TicketFactory
+    static class TicketFactory
     {
-        public ITicket GetTicket(TicketType ticketType)
+        public static ITicket GetTicket(TicketType ticketType)
         {
             switch (ticketType)
             {
@@ -18,6 +18,8 @@ namespace MovieTheatre
                     return new StandardTicket();
                 case TicketType.SENIOR:
                     return new SeniorTicket();
+                case TicketType.FREE:
+                    return new FreeTicket();
                 default:
                     throw new NotSupportedException();
             }

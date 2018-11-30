@@ -10,9 +10,14 @@ namespace MovieTheatre
     {
         private List<TicketOrder> _ticketOrders = new List<TicketOrder>();
 
-        public List<TicketOrder> GetTicketOrders()
+        internal List<TicketOrder> GetTicketOrders()
         {
             return _ticketOrders;
+        }
+
+        internal void AddOrder(TicketOrder order)
+        {
+            _ticketOrders.Add(order);
         }
     }
 }

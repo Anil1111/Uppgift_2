@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace MovieTheatre
 {
-    public enum TicketType
+    class FreeTicket : ITicket
     {
-        KID,
-        STANDARD,
-        SENIOR,
-        FREE
-    }
-
-    interface ITicket
-    {
-        int GetPrice();
+        public int GetPrice()
+        {
+            return 0;
+        }
     }
 }
