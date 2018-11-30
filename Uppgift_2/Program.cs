@@ -3,56 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MovieTheatre;
 
 namespace Uppgift_2
 {
 
     class Program
     {
-        public const int INFANT_AGE = 5;
-        public const int KID_AGE = 20;
-        public const int OLD_MAN_AGE = 64;
-        public const int VERY_OLD_AGE = 100;
-        public const int KID_PRICE = 80;
-        public const int STANDARD_PRICE = 120;
-        public const int OLD_MAN_PRICE = 90;
 
-        public static void YoungOrOld()
+        public static int[] RetrieveCustomerAges(int customersCount)
         {
-            bool wrongInput = true;
-            int? age = null;
-
-            do
+            int[] ages = new int[customersCount];
+            int index = 0;
+            while (index < customersCount)
             {
                 try
                 {
-                    Console.Write("Age input: ");
+                    Console.Write("Add age for person number {0}: ", index + 1);
                     string userInput = Console.ReadLine();
-                    age = int.Parse(userInput);
+                    int age = int.Parse(userInput);
+                    ages[index] = age;
+                    index++;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Age must be an integer!!!");
+                }
+            }
+            return ages;
+        }
+
+        public static void BuyMovieTickets()
+        {
+
+            bool wrongInput = true;
+            int[] ages;
+            int total = 0;
+            LocalMovieTheatre theatre = new LocalMovieTheatre();
+
+            while (wrongInput)
+            {
+                try
+                {
+                    Console.Write("Number of customers: ");
+                    string userInput = Console.ReadLine();
+                    int customersCount = int.Parse(userInput);
+                    ages = RetrieveCustomerAges(customersCount);
+
+                    total = theatre.BuyTickets(null, ages);
+
                     wrongInput = false;
                 }
                 catch (FormatException)
                 {
-                    Console.WriteLine("The value of age must be an integer");
+                    Console.WriteLine("Number of customers must be an integer!!!");
                 }
-            } while (wrongInput);
+            }
 
-            if(age < INFANT_AGE || age > VERY_OLD_AGE)
-            {
-                Console.WriteLine("Price: Free!!!");
-            }
-            else if(age >= INFANT_AGE && age <= KID_AGE)
-            {
-                Console.WriteLine("Kid price: {0}", KID_PRICE.ToString("c"));
-            }
-            else if(age >= KID_AGE && age <= OLD_MAN_AGE)
-            {
-                Console.WriteLine("Standard price: {0}", STANDARD_PRICE.ToString("c"));
-            }
-            else if(age > OLD_MAN_AGE && age <= VERY_OLD_AGE)
-            {
-                Console.WriteLine("Senior price {0}", OLD_MAN_PRICE.ToString("c"));
-            }
+            Console.WriteLine($"Movie tickets total: {total}", total);
+
         }
 
         private static void IterateInputTenTimes()
@@ -60,7 +69,6 @@ namespace Uppgift_2
             Console.Write("Write the text that you want to iterate 10 times: ");
             string userInput = Console.ReadLine();
 
-            //TODO: Add check for whitespace only input.
             Console.WriteLine("Here is your input iterated 10 times in the same row:");
             for(int i = 0; i < 10; i++)
             {
@@ -101,7 +109,7 @@ namespace Uppgift_2
             while (keepGoing)
             {
                 
-                Console.WriteLine("0. Quit\n1: Young or Old\n2. Iterate input ten times\n3. The third word");
+                Console.WriteLine("0. Quit\n1: Buy movie tickets\n2. Iterate input ten times\n3. The third word");
                 string menuOption = Console.ReadLine();
 
                 switch (menuOption)
@@ -110,7 +118,7 @@ namespace Uppgift_2
                         keepGoing = false;
                         break;
                     case "1":
-                        YoungOrOld();
+                        BuyMovieTickets();
                         Console.WriteLine("Press key to continue...");
                         Console.ReadKey(intercept: true);
                         break;

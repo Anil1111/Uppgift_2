@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Uppgift_2", "Uppgift_2\Uppgift_2.csproj", "{351947B7-6EF0-4323-BFBA-7524391BF4A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieTheatre", "MovieTheatre\MovieTheatre.csproj", "{8268CBE1-53CE-466A-A948-5F6D5E851584}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{351947B7-6EF0-4323-BFBA-7524391BF4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{351947B7-6EF0-4323-BFBA-7524391BF4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{351947B7-6EF0-4323-BFBA-7524391BF4A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8268CBE1-53CE-466A-A948-5F6D5E851584}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8268CBE1-53CE-466A-A948-5F6D5E851584}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8268CBE1-53CE-466A-A948-5F6D5E851584}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8268CBE1-53CE-466A-A948-5F6D5E851584}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{351947B7-6EF0-4323-BFBA-7524391BF4A0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Uppgift_2</RootNamespace>
-    <AssemblyName>Uppgift_2</AssemblyName>
+    <ProjectGuid>{8268CBE1-53CE-466A-A948-5F6D5E851584}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MovieTheatre</RootNamespace>
+    <AssemblyName>MovieTheatre</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,17 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="LocalMovieTheatre.cs" />
+    <Compile Include="MovieShow.cs" />
+    <Compile Include="MovieShowRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MovieTheatre\MovieTheatre.csproj">
-      <Project>{8268cbe1-53ce-466a-a948-5f6d5e851584}</Project>
-      <Name>MovieTheatre</Name>
-    </ProjectReference>
+    <Compile Include="TicketOrder.cs" />
+    <Compile Include="TicketOrderRepository.cs" />
+    <Compile Include="TicketOrderRow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
