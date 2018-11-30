@@ -10,8 +10,12 @@ namespace MovieTheatre
 
     class TicketOrder
     {
+        private MovieShow movieShow;
 
-        List<TicketOrderRow> _orderRows = new List<TicketOrderRow>();
+        public TicketOrder(MovieShow movieShow)
+        {
+            this.movieShow = movieShow;
+        }
 
         public void AddTicketOrderRow()
         {

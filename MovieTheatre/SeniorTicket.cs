@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MovieTheatre
 {
-    class TicketOrderRow
+    class SeniorTicket : ITicket
     {
-
+        public int GetPrice()
+        {
+            return PriceList.SENIOR_PRICE;
+        }
     }
 }

@@ -41,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITicket.cs" />
+    <Compile Include="KidTicket.cs" />
     <Compile Include="LocalMovieTheatre.cs" />
     <Compile Include="MovieShow.cs" />
     <Compile Include="MovieShowRepository.cs" />
+    <Compile Include="PriceList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeniorTicket.cs" />
+    <Compile Include="StandardTicket.cs" />
+    <Compile Include="TicketFactory.cs" />
     <Compile Include="TicketOrder.cs" />
     <Compile Include="TicketOrderRepository.cs" />
-    <Compile Include="TicketOrderRow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
