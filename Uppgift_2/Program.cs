@@ -11,24 +11,38 @@ namespace Uppgift_2
     class Program
     {
 
+        private static string AskForString(string prompt)
+        {
+            Console.Write(prompt);
+            return Console.ReadLine();
+        }
+
+        private static int AskForInt(string prompt, string errorMessage = "Error")
+        {
+            bool success = false;
+            int result = 0;
+            do
+            {
+                string answer = AskForString(prompt);
+                success = int.TryParse(answer, out result);
+                if (!success)
+                {
+                    Console.WriteLine(errorMessage);
+                }
+            } while (!success);
+
+            return result;
+        }
+
         public static int[] RetrieveCustomerAges(int customersCount)
         {
             int[] ages = new int[customersCount];
             int index = 0;
             while (index < customersCount)
             {
-                try
-                {
-                    Console.Write("Add age for person number {0}: ", index + 1);
-                    string userInput = Console.ReadLine();
-                    int age = int.Parse(userInput);
-                    ages[index] = age;
-                    index++;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Age must be an integer!!!");
-                }
+                int age = AskForInt(string.Format("Add age for person number {0}: ", index + 1), "Age must be an integer!!!");
+                ages[index] = age;
+                index++;
             }
             return ages;
         }
@@ -36,30 +50,13 @@ namespace Uppgift_2
         public static void BuyMovieTickets()
         {
 
-            bool wrongInput = true;
             int[] ages;
             int total = 0;
             LocalMovieTheatre theatre = new LocalMovieTheatre();
 
-            while (wrongInput)
-            {
-                try
-                {
-                    Console.Write("Number of customers: ");
-                    string userInput = Console.ReadLine();
-                    int customersCount = int.Parse(userInput);
-                    ages = RetrieveCustomerAges(customersCount);
-
-                    total = theatre.BuyTickets(null, ages);
-
-                    wrongInput = false;
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Number of customers must be an integer!!!");
-                }
-            }
-
+            int customersCount = AskForInt("Number of customers: ", "Number of customers must be an integer!!!");
+            ages = RetrieveCustomerAges(customersCount);
+            total = theatre.BuyTickets(null, ages);
             Console.WriteLine($"Movie tickets total: {total}", total);
 
         }
